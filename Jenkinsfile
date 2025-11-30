@@ -4,6 +4,11 @@ pipeline {
     }
 
     stages {
+        stage('Checkout') {
+            steps {
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'scm', url: 'https://github.com/Gopimahendar/cicdjava.git']])
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building...'
